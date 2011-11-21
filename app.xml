@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application name="PHP Unused Extensions Scanner" version="0.1"
+                                              author="Levin Pavel"
+                                              source_language="php"
+                                              source_file="unused_extensions_scanner.class.php"
+                                              source_classname="ExtensionsScanner">
+    <description>
+Command line utilite for searching loaded, but unused php extenstion in files of indicated directory.
+
+This can be useful if you want to speed up your scripts.
+To do this, disable unused extensions in the configuration file of PHP.
+Some extensions may not be called out of the code  but they may perfom service functions (xDebug, eAccelerator, APC, etc)
+Check the list of extensions before  switching off
+
+Caution: The author does not guarantee 100% accuracy of the scanner work
+Make sure your applications work after you disable extensions.
+
+What extension is used, can be defined as follows:
+  - with the reflection of the extension are extracted the names of classes, functions and constants
+  - these names are searched in files of the indicated directory
+    </description>
+
+    <method source_methodname="findUnusedExts">
+        <param type="string">
+            <description>
+                Directory of php project(s)
+            </description>
+        </param>
+        <return type="array">
+            <description>
+                Names of unused extensions
+            </description>
+            
+            <if checktype="empty">
+                All extensions are used
+            </if>
+        </return>
+    </method>
+
+</application>
